@@ -13,6 +13,7 @@ from brownie import (
 )
 import os
 import time
+from web3 import Web3
 
 # Set a default gas price
 from brownie.network import priority_fee
@@ -98,7 +99,7 @@ def get_breed(breed_number):
 
 
 def fund_with_link(
-    contract_address, account=None, link_token=None, amount=1000000000000000000
+    contract_address, account=None, link_token=None, amount=Web3.toWei(1, "ether")
 ):
     account = account if account else get_account()
     link_token = link_token if link_token else get_contract("link_token")
